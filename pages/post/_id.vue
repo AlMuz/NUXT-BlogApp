@@ -25,7 +25,7 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </main>
     <footer>
-      <!-- FORM -->
+      <CommentForm />
 
       <div class="comments" v-if="true">
         <Comment
@@ -43,13 +43,15 @@
 
 <script>
 import Comment from '@/components/main/Comment'
+import CommentForm from '@/components/main/CommentForm'
 
 export default {
   validate ({ params }) {
     return Boolean(params.id)
   },
   components: {
-    Comment
+    Comment,
+    CommentForm
   }
 }
 </script>
@@ -81,6 +83,10 @@ export default {
   .post-image img {
     width: 100%;
     height: auto;
+  }
+
+  .post-content {
+    margin-bottom: 1rem;
   }
 
   .comments {
