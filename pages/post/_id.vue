@@ -25,7 +25,10 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </main>
     <footer>
-      <CommentForm />
+      <CommentForm
+        v-if="canAddComment"
+        @created="createCommentHandler"
+      />
 
       <div class="comments" v-if="true">
         <Comment
@@ -48,6 +51,16 @@ import CommentForm from '@/components/main/CommentForm'
 export default {
   validate ({ params }) {
     return Boolean(params.id)
+  },
+  data () {
+    return {
+      canAddComment: true
+    }
+  },
+  methods: {
+    createCommentHandler () {
+      this.canAddComment = false
+    }
   },
   components: {
     Comment,
