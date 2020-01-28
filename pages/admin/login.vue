@@ -75,6 +75,13 @@ export default {
       })
     }
   },
+  mounted () {
+    const { message } = this.$route.query
+
+    if (message === 'login') {
+      this.$message.info('You must login before see something on this page')
+    }
+  },
   layout: 'empty'
 }
 </script>

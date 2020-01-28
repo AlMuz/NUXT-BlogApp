@@ -16,7 +16,8 @@ import Navigation from '@/components/admin/Navigation'
 export default {
   components: {
     Navigation
-  }
+  },
+  middleware: ['admin-auth']
 }
 </script>
 
