@@ -1,0 +1,66 @@
+<template>
+  <el-card
+    shadow="always"
+    :style="{width: '500px'}"
+  >
+    <el-form
+      ref="form"
+      :model="controls"
+      :rules="rules"
+      label-width="120px"
+      label-position="top"
+      @submit.native.prevent="onSubmit"
+    >
+      <h3>Login to administrator</h3>
+      <el-form-item label="Username" prop="username">
+        <el-input v-model.trim="controls.username" />
+      </el-form-item>
+      <el-form-item label="Password" prop="password">
+        <el-input
+          v-model.trim="controls.password"
+          type="password"
+        />
+      </el-form-item>
+      <el-form-item>
+        <el-button
+          :loading="loading"
+          type="primary"
+          native-type="submit">
+          Login
+        </el-button>
+      </el-form-item>
+    </el-form>
+  </el-card>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      loading: false,
+      controls: {
+        Username: '',
+        password: ''
+      },
+      rules: {
+        username: [
+          { required: true, message: 'Username cant be empty', trigger: 'blur' }
+        ],
+        password: [
+          { required: true, message: 'Password cant be empty', trigger: 'blur' },
+          { min: 6, message: 'Password must be more than 6 simbols', trigger: 'blur' }
+        ]
+      }
+    }
+  },
+  methods: {
+    onSubmit () {
+      console.log('submit')
+    }
+  },
+  layout: 'empty'
+}
+</script>
+
+<style lang="scss" scoped>
+</style>
