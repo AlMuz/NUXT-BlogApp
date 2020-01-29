@@ -78,8 +78,13 @@ export default {
   mounted () {
     const { message } = this.$route.query
 
-    if (message === 'login') {
-      this.$message.info('You must login before see something on this page')
+    switch (message) {
+      case 'login':
+        this.$message.info('You must login before see something on this page')
+        break
+      case 'logout':
+        this.$message.success('You logout successfully!')
+        break
     }
   },
   layout: 'empty'
