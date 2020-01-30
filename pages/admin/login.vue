@@ -39,7 +39,7 @@ export default {
     return {
       loading: false,
       controls: {
-        Username: '',
+        username: '',
         password: ''
       },
       rules: {
