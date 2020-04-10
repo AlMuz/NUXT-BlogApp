@@ -1,5 +1,6 @@
+/* eslint-disable no-empty-pattern */
 export const actions = {
-  async fetchAdminPosts() {
+  async fetchAdminPosts({}) {
     return await new Promise((resolve) => {
       setTimeout(() => {
         resolve([
@@ -27,5 +28,8 @@ export const actions = {
         ])
       })
     })
+  },
+  async deletePost({}, id) {
+    console.log(id)
   }
 }
