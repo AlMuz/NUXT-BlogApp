@@ -1,10 +1,7 @@
 <template>
   <el-row type="flex" justify="center">
     <el-col :xs="24" :sm="24" :md="12" :lg="10">
-      <AppPost
-      v-for="post in 3"
-      :key="post"
-      />
+      <AppPost v-for="post in 3" :key="post" />
     </el-col>
   </el-row>
 </template>
@@ -18,6 +15,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

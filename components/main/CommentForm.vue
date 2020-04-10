@@ -13,17 +13,14 @@
     </el-form-item>
     <el-form-item label="Your message" prop="text">
       <el-input
-        type="textarea"
         v-model.trim="controls.text"
+        type="textarea"
         resize="none"
         :rows="2"
       />
     </el-form-item>
     <el-form-item>
-      <el-button
-        :loading="loading"
-        type="primary"
-        native-type="submit">
+      <el-button :loading="loading" type="primary" native-type="submit">
         Add comment
       </el-button>
     </el-form-item>
@@ -32,7 +29,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       loading: false,
       controls: {
@@ -50,7 +47,7 @@ export default {
     }
   },
   methods: {
-    onSubmit () {
+    onSubmit() {
       this.$refs.form.validate((valid) => {
         if (valid) {
           this.loading = true
@@ -76,5 +73,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

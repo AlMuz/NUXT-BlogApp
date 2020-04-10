@@ -7,12 +7,12 @@
 <script>
 export default {
   computed: {
-    error () {
+    error() {
       return this.$store.getters.error
     }
   },
   watch: {
-    error (value) {
+    error(value) {
       this.$message.error(value.Error)
     }
   }

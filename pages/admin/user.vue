@@ -12,16 +12,10 @@
       <el-input v-model.trim="controls.username" />
     </el-form-item>
     <el-form-item label="Password" prop="password">
-      <el-input
-        v-model.trim="controls.password"
-        type="password"
-      />
+      <el-input v-model.trim="controls.password" type="password" />
     </el-form-item>
     <el-form-item>
-      <el-button
-        :loading="loading"
-        type="primary"
-        native-type="submit">
+      <el-button :loading="loading" type="primary" native-type="submit">
         Create
       </el-button>
     </el-form-item>
@@ -31,7 +25,7 @@
 <script>
 export default {
   layout: 'admin',
-  data () {
+  data() {
     return {
       loading: false,
       controls: {
@@ -43,14 +37,22 @@ export default {
           { required: true, message: 'Username cant be empty', trigger: 'blur' }
         ],
         password: [
-          { required: true, message: 'Password cant be empty', trigger: 'blur' },
-          { min: 6, message: 'Password must be more than 6 simbols', trigger: 'blur' }
+          {
+            required: true,
+            message: 'Password cant be empty',
+            trigger: 'blur'
+          },
+          {
+            min: 6,
+            message: 'Password must be more than 6 simbols',
+            trigger: 'blur'
+          }
         ]
       }
     }
   },
   methods: {
-    onSubmit () {
+    onSubmit() {
       this.$refs.form.validate(async (valid) => {
         if (valid) {
           this.loading = true
