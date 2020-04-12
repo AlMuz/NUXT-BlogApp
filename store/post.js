@@ -44,5 +44,15 @@ export const actions = {
   async updatePost({}, { id, text }) {
     console.log(id)
     console.log(text)
+  },
+  async createPost({}, { title, text }) {
+    console.log(title)
+    console.log(text)
+
+    return await new Promise((resolve) => {
+      setTimeout(() => {
+        resolve()
+      }, 1000)
+    })
   }
 }
