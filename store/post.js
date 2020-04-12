@@ -45,14 +45,22 @@ export const actions = {
     console.log(id)
     console.log(text)
   },
-  async createPost({}, { title, text }) {
-    console.log(title)
-    console.log(text)
+  async createPost({ commit }, { title, text, image }) {
+    try {
+      const formData = new FormData()
 
-    return await new Promise((resolve) => {
-      setTimeout(() => {
-        resolve()
-      }, 1000)
-    })
+      formData.append('title', title)
+      formData.append('text', text)
+      formData.append('image', image, image.name)
+
+      return await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve()
+        }, 1000)
+      })
+    } catch (error) {
+      commit('setError', error, { root: true })
+      throw error
+    }
   }
 }

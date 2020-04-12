@@ -33,6 +33,23 @@
       Preview dialog
     </el-button>
 
+    <el-upload
+      ref="upload"
+      class="mb"
+      action="https://jsonplaceholder.typicode.com/posts/"
+      drag
+      :auto-upload="false"
+      :on-change="handleImageChange"
+    >
+      <i class="el-icon-upload" />
+      <div class="el-upload__text">
+        Drop file here or <em>click to upload</em>
+      </div>
+      <div slot="tip" class="el-upload__tip">
+        jpg/png files with a size less than 500kb
+      </div>
+    </el-upload>
+
     <el-form-item>
       <el-button :loading="loading" type="primary" native-type="submit">
         Create
@@ -46,6 +63,7 @@ export default {
   layout: 'admin',
   data() {
     return {
+      image: null,
       loading: false,
       previewDialog: false,
       controls: {
@@ -65,26 +83,34 @@ export default {
   methods: {
     onSubmit() {
       this.$refs.form.validate(async (valid) => {
-        if (valid) {
+        if (valid && this.image) {
           this.loading = true
 
           const formData = {
             text: this.controls.text,
-            title: this.controls.title
+            title: this.controls.title,
+            image: this.image
           }
 
           try {
             await this.$store.dispatch('post/createPost', formData)
             this.controls.title = ''
             this.controls.text = ''
+            this.image = null
+            this.$refs.upload.clearFiles()
             this.$message.success('Post created')
             this.loading = false
           } catch (error) {
             this.$message.error('Post not created')
             this.loading = false
           }
+        } else {
+          this.$message.warning('Form is not valid')
         }
       })
+    },
+    handleImageChange(file) {
+      this.image = file.raw
     }
   }
 }
