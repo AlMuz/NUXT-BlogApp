@@ -7,19 +7,31 @@
     label-position="top"
     @submit.native.prevent="onSubmit"
   >
-    <h1 class="mb">Create new post</h1>
+    <h1 class="mb">
+      Create new post
+    </h1>
     <el-form-item label="Post title" prop="title">
       <el-input v-model.trim="controls.title" />
     </el-form-item>
 
     <el-form-item label="Text in format .md or .html" prop="text">
       <el-input
-        v-model.trim="controls.text"
+        v-model="controls.text"
         type="textarea"
         resize="none"
         :rows="10"
       />
     </el-form-item>
+
+    <el-dialog title="Text preview" :visible.sync="previewDialog">
+      <div :key="controls.text.length">
+        <vue-md>{{ controls.text }}</vue-md>
+      </div>
+    </el-dialog>
+
+    <el-button type="success" plain class="mb" @click="previewDialog = true">
+      Preview dialog
+    </el-button>
 
     <el-form-item>
       <el-button :loading="loading" type="primary" native-type="submit">
@@ -35,6 +47,7 @@ export default {
   data() {
     return {
       loading: false,
+      previewDialog: false,
       controls: {
         title: '',
         text: ''
