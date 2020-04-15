@@ -28,4 +28,19 @@ module.exports.login = async (req, res) => {
   }
 }
 
-module.exports.createUser = (req, res) => {}
+module.exports.createUser = async (req, res) => {
+  const candidate = await User.findOne({ username: req.body.username })
+  if (candidate) {
+    res.status(409).json({ message: 'This login is already taken' })
+  } else {
+    const salt = bcrypt.genSaltSync(10)
+
+    const user = new User({
+      username: req.body.username,
+      password: bcrypt.hashSync(req.body.password, salt)
+    })
+
+    await user.save()
+    res.status(201).json(user)
+  }
+}
