@@ -1,3 +1,4 @@
 module.exports = {
-  MONGO_URI: `mongodb+srv://dbuser:jOBoxzU86vPz3Av2@nuxt-blogapp-patr1.mongodb.net/`
+  MONGO_URI: `mongodb+srv://dbuser:jOBoxzU86vPz3Av2@nuxt-blogapp-patr1.mongodb.net/`,
+  JWT: 'dev-jwt-key'
 }
