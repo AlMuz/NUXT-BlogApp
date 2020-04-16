@@ -1,6 +1,8 @@
 const passport = require('passport')
 const { Router } = require('express')
+const upload = require('../middleware/upload')
 const controller = require('../controllers/post.controller')
+
 const router = Router()
 
 // admin
@@ -10,6 +12,7 @@ router.post(
   passport.authenticate('jwt', {
     session: false
   }),
+  upload.single('image'),
   controller.createPost
 )
 
