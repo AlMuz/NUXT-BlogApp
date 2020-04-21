@@ -1,5 +1,3 @@
-/* eslint-disable no-empty */
-/* eslint-disable no-unused-vars */
 export const state = () => ({
   token: null
 })
