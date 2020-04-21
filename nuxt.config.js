@@ -27,7 +27,11 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/element-ui', '@/plugins/vue-markdown'],
+  plugins: [
+    '@/plugins/element-ui',
+    '@/plugins/vue-markdown',
+    '@/plugins/axios'
+  ],
   /*
    ** Nuxt.js dev-modules
    */

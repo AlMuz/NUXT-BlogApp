@@ -62,6 +62,9 @@ export default {
       case 'logout':
         this.$message.success('You logout successfully!')
         break
+      case 'session':
+        this.$message.warning('Your session expired! Please relogin.')
+        break
     }
   },
   methods: {
