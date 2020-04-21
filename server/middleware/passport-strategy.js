@@ -4,7 +4,7 @@ const keys = require('../keys')
 const User = model('users')
 
 const options = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken,
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: keys.JWT
 }
 
