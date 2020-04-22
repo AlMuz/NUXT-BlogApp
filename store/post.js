@@ -1,49 +1,35 @@
-const posts = [
-  {
-    _id: Math.floor(Math.random() * Math.floor(100)),
-    title: 'Post',
-    date: new Date(),
-    views: 22,
-    comments: [1, 2]
-  },
-  {
-    _id: Math.floor(Math.random() * Math.floor(100)),
-    title: 'Post2',
-    date: new Date(),
-    views: 223,
-    comments: [1, 4]
-  },
-  {
-    _id: Math.floor(Math.random() * Math.floor(100)),
-    title: 'Post7',
-    date: new Date(),
-    views: 22,
-    comments: [2, 2]
-  }
-]
-
-/* eslint-disable no-empty-pattern */
 export const actions = {
-  async fetchAdminPosts({}) {
-    return await new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(posts)
-      }, 1000)
-    })
+  async fetchAdminPosts({ commit }) {
+    try {
+      return await this.$axios.$get('/api/post/admin')
+    } catch (error) {
+      commit('setError', error, { root: true })
+      throw error
+    }
   },
-  async fetchPostById({}, id) {
-    return await new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(posts.find((post) => (post._id = id)))
-      }, 1000)
-    })
+  async fetchPostById({ commit }, id) {
+    try {
+      return await this.$axios.$get(`/api/post/admin/${id}`)
+    } catch (error) {
+      commit('setError', error, { root: true })
+      throw error
+    }
   },
-  async deletePost({}, id) {
-    console.log(id)
+  async deletePost({ commit }, id) {
+    try {
+      return await this.$axios.$delete(`/api/post/admin/${id}`)
+    } catch (error) {
+      commit('setError', error, { root: true })
+      throw error
+    }
   },
-  async updatePost({}, { id, text }) {
-    console.log(id)
-    console.log(text)
+  async updatePost({ commit }, { id, text }) {
+    try {
+      return await this.$axios.$put(`/api/post/admin/${id}`, { text })
+    } catch (error) {
+      commit('setError', error, { root: true })
+      throw error
+    }
   },
   async createPost({ commit }, { title, text, image }) {
     try {

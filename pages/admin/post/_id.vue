@@ -14,7 +14,6 @@
       label-position="top"
       @submit.native.prevent="onSubmit"
     >
-      <!-- <h3>Login to administrator</h3>  -->
       <el-form-item label="Text in format .md or .html" prop="text">
         <el-input
           v-model.trim="controls.text"
@@ -47,7 +46,6 @@ export default {
   layout: 'admin',
   async asyncData({ store, params }) {
     const post = await store.dispatch('post/fetchPostById', params.id)
-    console.log(post)
 
     return { post }
   },
@@ -63,6 +61,9 @@ export default {
         ]
       }
     }
+  },
+  mounted() {
+    this.controls.text = this.post.text
   },
   methods: {
     onSubmit() {
