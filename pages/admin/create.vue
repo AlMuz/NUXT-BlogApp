@@ -11,7 +11,7 @@
       Create new post
     </h1>
     <el-form-item label="Post title" prop="title">
-      <el-input v-model.trim="controls.title" />
+      <el-input v-model="controls.title" />
     </el-form-item>
 
     <el-form-item label="Text in format .md or .html" prop="text">
