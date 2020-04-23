@@ -7,9 +7,25 @@ export const actions = {
       throw error
     }
   },
-  async fetchPostById({ commit }, id) {
+  async fetchPosts({ commit }) {
+    try {
+      return await this.$axios.$get('/api/post')
+    } catch (error) {
+      commit('setError', error, { root: true })
+      throw error
+    }
+  },
+  async fetchAdminPostById({ commit }, id) {
     try {
       return await this.$axios.$get(`/api/post/admin/${id}`)
+    } catch (error) {
+      commit('setError', error, { root: true })
+      throw error
+    }
+  },
+  async fetchPostById({ commit }, id) {
+    try {
+      return await this.$axios.$get(`/api/post/${id}`)
     } catch (error) {
       commit('setError', error, { root: true })
       throw error
@@ -40,6 +56,14 @@ export const actions = {
       formData.append('image', image, image.name)
 
       return await this.$axios.$post('/api/post/admin', formData)
+    } catch (error) {
+      commit('setError', error, { root: true })
+      throw error
+    }
+  },
+  async addView({ commit }, { _id, views }) {
+    try {
+      return await this.$axios.$put(`/api/post/add/view/${_id}`, { views })
     } catch (error) {
       commit('setError', error, { root: true })
       throw error
