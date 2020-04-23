@@ -54,6 +54,6 @@ router.get('/', controller.getPosts)
 
 router.get('/:id', controller.getPostById)
 
-router.put('/:id', controller.postViewed)
+router.put('/add/view/:id', controller.postViewed)
 
 module.exports = router
