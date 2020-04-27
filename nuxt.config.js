@@ -30,7 +30,8 @@ module.exports = {
   plugins: [
     '@/plugins/element-ui',
     '@/plugins/vue-markdown',
-    '@/plugins/axios'
+    '@/plugins/axios',
+    '@/plugins/filters'
   ],
   /*
    ** Nuxt.js dev-modules
