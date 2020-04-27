@@ -69,6 +69,11 @@ export default {
       canAddComment: true
     }
   },
+  head() {
+    return {
+      title: this.post.title
+    }
+  },
   methods: {
     createCommentHandler(comment) {
       this.post.comments.unshift(comment)

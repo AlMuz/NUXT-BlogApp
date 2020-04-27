@@ -13,6 +13,11 @@ export default {
     const posts = await store.dispatch('post/fetchPosts')
     return { posts }
   },
+  head() {
+    return {
+      title: 'Main page'
+    }
+  },
   components: {
     AppPost
   }

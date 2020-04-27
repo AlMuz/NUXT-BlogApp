@@ -51,6 +51,11 @@ export default {
       }
     }
   },
+  head() {
+    return {
+      title: 'Create user'
+    }
+  },
   methods: {
     onSubmit() {
       this.$refs.form.validate(async (valid) => {

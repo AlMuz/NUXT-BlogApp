@@ -80,6 +80,11 @@ export default {
       }
     }
   },
+  head() {
+    return {
+      title: 'Create post'
+    }
+  },
   methods: {
     onSubmit() {
       this.$refs.form.validate(async (valid) => {

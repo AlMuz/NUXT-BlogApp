@@ -67,6 +67,11 @@ export default {
         break
     }
   },
+  head() {
+    return {
+      title: 'Login to administrator'
+    }
+  },
   methods: {
     onSubmit() {
       this.$refs.form.validate(async (valid) => {

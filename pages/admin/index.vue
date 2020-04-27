@@ -19,10 +19,14 @@ import AnalyicsChart from '@/components/admin/AnalyticsChart'
 export default {
   layout: 'admin',
   components: { AnalyicsChart },
-
   async asyncData({ store }) {
     const { views, comments } = await store.dispatch('post/getAnalytics')
     return { views, comments }
+  },
+  head() {
+    return {
+      title: 'Posts analytics'
+    }
   }
 }
 </script>

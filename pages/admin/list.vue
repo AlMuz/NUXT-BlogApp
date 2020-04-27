@@ -48,6 +48,11 @@ export default {
 
     return { posts }
   },
+  head() {
+    return {
+      title: 'Posts'
+    }
+  },
   methods: {
     open(id) {
       this.$router.push(`/admin/post/${id}`)
