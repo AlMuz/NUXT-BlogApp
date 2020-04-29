@@ -15,7 +15,15 @@ export default {
   },
   head() {
     return {
-      title: 'Main page'
+      title: 'Main page',
+      meta: [
+        {
+          hid: 'homepage-d',
+          name: 'description',
+          content: 'The best blog posts'
+        },
+        { hid: 'homepage-k', name: 'keywords', content: 'blog' }
+      ]
     }
   },
   components: {

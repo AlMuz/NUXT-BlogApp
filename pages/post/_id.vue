@@ -71,7 +71,15 @@ export default {
   },
   head() {
     return {
-      title: this.post.title
+      title: this.post.title,
+      meta: [
+        {
+          hid: `post-${this.post._id}-d`,
+          name: 'description',
+          content: this.post.title
+        },
+        { hid: `post-${this.post._id}-k`, name: 'keywords', content: 'blog' }
+      ]
     }
   },
   methods: {
