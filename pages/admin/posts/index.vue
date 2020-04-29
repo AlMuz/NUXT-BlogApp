@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     open(id) {
-      this.$router.push(`/admin/post/${id}`)
+      this.$router.push(`/admin/posts/${id}`)
     },
     async remove(id) {
       try {
